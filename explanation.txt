@@ -1,0 +1,7 @@
+how does createelement works
+
+React.createelement is creating an object. 
+Object is then converted into HTML code and puts it upon DOM.
+
+
+
