@@ -1,81 +1,80 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// React.createElement => Object => HTML(DOM)
-// React.createElement gives us the obect and then that object will be rendered onto the HTML DOM.
-// const heading1 = React.createElement("h1",{id:"title",key:"h1"}, "Namasthe React1");
-// Java Script Extension Tags
-// If we write multiple lines then we have to use the paranthesis like below
-// In HTML we have the concept of ID coming to keys react keeps a track of key to find the uniqueness
-// difference between JSX and HTML
-  // JSX is case-sensitive with camelcase properties while HTML is not case sensitive
-  // JSX allows javascript expressions but HTML doesn't have logic for built it requires seperate script tag
-  // JSX requries single root but HTML doesn't have this restriction
-  // attributes are camel cased but in HTML attributes are lower cased
-  // JSX can have custom components but HTML doesnot support this kind of custom components
-// How does JSX executes
-  // using Babel compiler - it takes the JSX code and will return the normal code
-  // it created abstract syntax tree
-  // babel converts line number 21 code into line 20 code
+/**
+    * Header
+      - Logo
+      - Nav Items ( Right Side )
+      - Cart
+    *  body
+      *  Search Bar
+      * restaurent List 
+          * Restaurent Card
+            * Image 
+            * Name
+            * Rating
+            * Cusines
+    *  footer  
+      - Links
+      - Copyright
+    */
+const Title = ()=>
+( 
+ <a href="/">
+ <img 
+className='logo'
+src="https://cdn.octopix.in/uploads/company-logo/2020/11/19/food-villa-pSJVhwoN8KxgwV9jtuB1MlosJ0ejoKfiBiVO1jJPLM61shyarbxVvjIFy3DVpbUML8eBxcUo7BOWXQcd-350x350.jpg" 
+alt="Food Vanilla"
+/> 
+</a>
+);
 
-// const heading = React.createElement("h1",{id:"title",key:"h1"}, "Namasthe React");
-// JSX = babel understand JSX and converts => React.createElement => Object => HTML( DOM )
-// babel comes along with the parcel
-// The below one is known as React Element
-// const heading = (<h1 id="title" key="h1">
-//   Namasthe React2</h1> );
-// React Component 
-// Two types of components
-//  - function component NEW way of writing code
-//  - class based componen  ts OLD way of writing code
-  // React element is an object
-// Functional component is nothing but a javscript function whihc returns a react element or JSX is known as react functional component
-// Name of the component must starts with capital letter it is not mandatory but it is recommended to use capital letter*/}
-const heading1 = <h1> H1 tag inside heading1 tag</h1>
-const MyFunction = () => {
-   return (
-   <div>
-    <h1>Welcome to react functional component</h1>
-    <h2> this is h2 tag</h2>
-   </div>
-   );
-};
-const MyFunction1 = () => {
+const Header = () => {
   return (
-  <div>
-    {console.log("console print inside the react component")}
-   <h1>Welcome to react functional component</h1>
-   <h2> this is h2 tag</h2>
+  <div className='header'>
+    <Title/>
+   <div className='nav-items'>
+    <ul>
+      <li>Home</li>
+      <li>About Us</li>
+      <li> Contact</li>
+      <li>Cart</li>
+    </ul>
+   </div>
   </div>
   );
 };
-// const data = api.getData();
-const security = () =>{
+const Body = () =>
+{
   return (
-    <div>
-      {/* whenever we use any data from the API then JSX will take care of security whether the data from the API is secure or not. This can be done using sanitization. This JSX uses sanitization.  */}
-      {/* {data} */}
-      <h1> Heading</h1>
-    </div>
+    <h4>Body</h4>
   )
-}
-// component composition
-  // if i have to use a component inside a component is known as component composition - nested composition
-// Using react element inside the component
-const MyComponent = ()=>{
-  return (
-    <div>
-      {/* this is the way to use react element inside the componets */}
-      {/* This is how we have to use the fucntional components insdeit he component */}
-      <MyFunction/>
-      {/* Another way of calling functional component is  */}
-      {MyFunction1()}
-      {heading1}
-    <h2>H2 tag isndie the mycompoent react component</h2>
-    </div>
-  );
 };
-// console.log(heading1);
+const Footer = ()=>
+{
+  return <h4>Footer</h4>
+};
+// JSX should only have one parent element
+// React elements can only be rendered as part of a single parent element in the component's return. 
+// This is because a React component must return a single React element
+// If i want more elements then we need to use div. if we don't want to use div then we have another option such as react.fragment
+//React fragment- React.fragment is a component which is exported by this react 
+// React.fragment is like an empty tag.
+// for this we can write all the tags inside the <React.Fragment>all the tags here</React.Fragment>
+//  * But when we write react.fragment the code looks ugly and the react mentioned just to write only the empty tags like
+// <>all the tags here</> - this is basically an empty tag but this is known s react.fragment 
+//  The above is basically shorthand for React.Fragment
+
+const AppLayout = () =>
+{
+  return (
+    <> 
+    <Header/>
+    <Body/>
+    <Footer/>
+    </>
+
+  )
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// render method syntax root.render(reactElementName);
-// rendering the react componenent is root.render(<reactComponent/>);
-root.render(<MyComponent />);
+root.render(<AppLayout />);
