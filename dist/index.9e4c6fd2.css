@@ -17,4 +17,20 @@
 .logo {
   width: 100px;
 }
+
+.card {
+  border: 1px solid #000;
+  width: 150px;
+  padding: 10px;
+}
+
+.card > img {
+  width: 100px;
+}
+
+.restrau-list {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+}
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
